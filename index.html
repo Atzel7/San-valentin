@@ -257,6 +257,16 @@ setInterval(() => {
 
   setTimeout(() => deco.remove(), 7000);
 }, 800);
+  
+  window.addEventListener("load", () => {
+  const noBtn = document.getElementById("noBtn");
+  const rect = noBtn.getBoundingClientRect();
+
+  // Coloca el botón exactamente donde estaba visualmente
+  noBtn.style.left = rect.left + "px";
+  noBtn.style.top = rect.top + "px";
+});
+
 
 </script>
 
