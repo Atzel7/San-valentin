@@ -59,7 +59,6 @@ button:hover {
 
 #noBtn {
   background: #adb5bd;
-  position: relative; /* 👈 importante */
   transition: transform 0.25s ease;
 }
 
@@ -206,10 +205,10 @@ function moveNo() {
   const btn = document.getElementById("noBtn");
 
   const padding = 20;
-  const btnRect = btn.getBoundingClientRect();
+  const rect = btn.getBoundingClientRect();
 
-  const maxX = window.innerWidth - btnRect.width - padding;
-  const maxY = window.innerHeight - btnRect.height - padding;
+  const maxX = window.innerWidth - rect.width - padding;
+  const maxY = window.innerHeight - rect.height - padding;
 
   const x = Math.random() * maxX;
   const y = Math.random() * maxY;
@@ -263,14 +262,7 @@ setInterval(() => {
   setTimeout(() => deco.remove(), 7000);
 }, 800);
   
-  window.addEventListener("load", () => {
-  const noBtn = document.getElementById("noBtn");
-  const rect = noBtn.getBoundingClientRect();
 
-  // Coloca el botón exactamente donde estaba visualmente
-  noBtn.style.left = rect.left + "px";
-  noBtn.style.top = rect.top + "px";
-})
   const noBtn = document.getElementById("noBtn");
 noBtn.addEventListener("mouseenter", moveNo); // PC
 noBtn.addEventListener("touchstart", moveNo); // Móvil
