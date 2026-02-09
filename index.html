@@ -169,7 +169,8 @@ button:hover {
 
 <div class="buttons">
   <button onclick="sayYes()">💘 Sí</button>
-  <button id="noBtn" ontouchstart="moveNo()" onmouseenter="moveNo()">💔 No</button>
+<button id="noBtn">💔 No</button>
+
 
 </div>
 
@@ -212,31 +213,6 @@ function moveNo() {
 
   btn.style.transform = `translate(${x}px, ${y}px)`;
 }
-
-
-  // La PRIMERA vez, lo sacamos del flujo correctamente
-  if (!noMoved) {
-    const rect = btn.getBoundingClientRect();
-    btn.style.position = "fixed";
-    btn.style.left = rect.left + "px";
-    btn.style.top = rect.top + "px";
-    noMoved = true;
-  }
-
-  const padding = 20;
-  const btnWidth = btn.offsetWidth;
-  const btnHeight = btn.offsetHeight;
-
-  const maxX = window.innerWidth - btnWidth - padding;
-  const maxY = window.innerHeight - btnHeight - padding;
-
-  const x = Math.random() * maxX;
-  const y = Math.random() * maxY;
-
-  btn.style.left = x + "px";
-  btn.style.top = y + "px";
-}
-
 
 // 💖 MUCHOS CORAZONES al decir SÍ
 function sayYes() {
@@ -288,7 +264,10 @@ setInterval(() => {
   // Coloca el botón exactamente donde estaba visualmente
   noBtn.style.left = rect.left + "px";
   noBtn.style.top = rect.top + "px";
-});
+})
+  const noBtn = document.getElementById("noBtn");
+noBtn.addEventListener("mouseenter", moveNo); // PC
+noBtn.addEventListener("touchstart", moveNo); // Móvil
 
 
 </script>
