@@ -59,7 +59,7 @@ button:hover {
 
 #noBtn {
   background: #adb5bd;
-  position: fixed; /* 👈 importante */
+  position: relative; /* 👈 importante */
   transition: transform 0.25s ease;
 }
 
@@ -198,8 +198,19 @@ setInterval(updateCounter, 1000);
 updateCounter();
 
 // 😈 Botón NO huye
+let noMoved = false;
+
 function moveNo() {
   const btn = document.getElementById("noBtn");
+
+  // La PRIMERA vez, lo sacamos del flujo correctamente
+  if (!noMoved) {
+    const rect = btn.getBoundingClientRect();
+    btn.style.position = "fixed";
+    btn.style.left = rect.left + "px";
+    btn.style.top = rect.top + "px";
+    noMoved = true;
+  }
 
   const padding = 20;
   const btnWidth = btn.offsetWidth;
@@ -214,6 +225,7 @@ function moveNo() {
   btn.style.left = x + "px";
   btn.style.top = y + "px";
 }
+
 
 // 💖 MUCHOS CORAZONES al decir SÍ
 function sayYes() {
