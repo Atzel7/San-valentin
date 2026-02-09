@@ -127,6 +127,39 @@ button:hover {
   }
 }
 
+/* 🌸 Suavizar todo */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 💘 Botones con rebote suave */
+button {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* ✨ Corazones más flotantes */
+.heart {
+  animation: float 6s ease-in infinite;
+}
+
+/* 🎉 Confeti */
+.confetti {
+  position: fixed;
+  top: -10px;
+  font-size: 18px;
+  animation: confettiFall 5s linear forwards;
+}
+
+@keyframes confettiFall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
 
 </style>
 </head>
@@ -221,14 +254,44 @@ function moveNo() {
 
 // 💖 MUCHOS CORAZONES al decir SÍ
 function sayYes() {
-  for (let i = 0; i < 70; i++) {
-    setTimeout(createHeart, i * 50);
+  // 💖 Corazones
+  for (let i = 0; i < 80; i++) {
+    setTimeout(createHeart, i * 40);
   }
-  alert("💖💖💖\n Me haces tan feliz que no sabes cuánto 🥹💖\n\n" +
-      "Te amo, gracias por existir y por elegirme.\n" +
-      "Prometo cuidarte, elegirte y hacerte sonreír.\nHoy y siempre.💕💕");
+
+  // 🎉 Confeti
+  for (let i = 0; i < 50; i++) {
+    setTimeout(createConfetti, i * 60);
+  }
+
   document.getElementById("music").play();
+
+  setTimeout(() => {
+    alert(
+      "💖💖💖\n" +
+      "No sabes lo feliz que me haces 🥹\n\n" +
+      "Te amo y gracias por llegar a mi vida,\n" +
+      "por quedarte y por elegirme.\n\n" +
+      "Prometo cuidarte,\n" +
+      "hacerte reír y caminar contigo.\n\n" +
+      "Hoy y siempre 💕"
+    );
+  }, 600);
 }
+  function createConfetti() {
+  const confetti = document.createElement("div");
+  const icons = ["🎉", "✨", "💖", "💘", "🥰"];
+
+  confetti.className = "confetti";
+  confetti.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+  confetti.style.left = Math.random() * 100 + "vw";
+  confetti.style.fontSize = Math.random() * 20 + 14 + "px";
+
+  document.body.appendChild(confetti);
+  setTimeout(() => confetti.remove(), 5000);
+}
+
+
 
 // 💕 Crear corazones
 function createHeart() {
