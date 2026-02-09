@@ -89,6 +89,25 @@ button:hover {
   background: #d63384;
   font-size: 0.9em;
 }
+  .valentin-question {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2em;
+  color: #d63384;
+  margin-top: 25px;
+  animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 </style>
 </head>
 
@@ -123,9 +142,13 @@ button:hover {
     No prometo perfección,<br>
     pero sí ganas, risas y muchos momentos juntos.
   </p>
+  <h2 class="valentin-question">
+  ¿Quieres ser mi San Valentín? 💖
+</h2>
 
-  <button onclick="sayYes()">💘 Sí</button>
-  <button id="noBtn" onmouseover="moveNo()">💔 No</button>
+<button onclick="sayYes()">💘 Sí</button>
+<button id="noBtn" onmouseover="moveNo()">💔 No</button>
+
 
   <div class="footer">
     Hecho con cariño, solo para ti ✨
