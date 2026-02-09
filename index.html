@@ -59,7 +59,8 @@ button:hover {
 
 #noBtn {
   background: #adb5bd;
-  position: relative;
+  position: fixed; /* 👈 importante */
+  transition: transform 0.25s ease;
 }
 
 .footer {
@@ -199,11 +200,20 @@ updateCounter();
 // 😈 Botón NO huye
 function moveNo() {
   const btn = document.getElementById("noBtn");
-  btn.style.left = Math.random() * (window.innerWidth - 100) + "px";
-  btn.style.top = Math.random() * (window.innerHeight - 50) + "px";
+
+  const padding = 20;
+  const btnWidth = btn.offsetWidth;
+  const btnHeight = btn.offsetHeight;
+
+  const maxX = window.innerWidth - btnWidth - padding;
+  const maxY = window.innerHeight - btnHeight - padding;
+
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  btn.style.left = x + "px";
+  btn.style.top = y + "px";
 }
-
-
 
 // 💖 MUCHOS CORAZONES al decir SÍ
 function sayYes() {
