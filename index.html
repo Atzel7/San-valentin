@@ -169,7 +169,8 @@ button:hover {
 
 <div class="buttons">
   <button onclick="sayYes()">💘 Sí</button>
-  <button id="noBtn" onmouseover="moveNo()">💔 No</button>
+  <button id="noBtn" ontouchstart="moveNo()" onmouseenter="moveNo()">💔 No</button>
+
 </div>
 
 
@@ -202,6 +203,16 @@ let noMoved = false;
 
 function moveNo() {
   const btn = document.getElementById("noBtn");
+
+  const maxX = window.innerWidth / 2;
+  const maxY = window.innerHeight / 3;
+
+  const x = Math.random() * maxX * 2 - maxX;
+  const y = Math.random() * maxY * 2 - maxY;
+
+  btn.style.transform = `translate(${x}px, ${y}px)`;
+}
+
 
   // La PRIMERA vez, lo sacamos del flujo correctamente
   if (!noMoved) {
