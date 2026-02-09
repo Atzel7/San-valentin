@@ -107,6 +107,24 @@ button:hover {
     transform: translateY(0);
   }
 }
+  .buttons {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+@keyframes floatBg {
+  from {
+    transform: translateY(0);
+    opacity: 0.9;
+  }
+  to {
+    transform: translateY(-110vh);
+    opacity: 0;
+  }
+}
+
 
 </style>
 </head>
@@ -146,8 +164,10 @@ button:hover {
   ¿Quieres ser mi San Valentín? 💖
 </h2>
 
-<button onclick="sayYes()">💘 Sí</button>
-<button id="noBtn" onmouseover="moveNo()">💔 No</button>
+<div class="buttons">
+  <button onclick="sayYes()">💘 Sí</button>
+  <button id="noBtn" onmouseover="moveNo()">💔 No</button>
+</div>
 
 
   <div class="footer">
@@ -208,6 +228,22 @@ function playMusic() {
   document.getElementById("music").play();
   document.getElementById("musicBtn").style.display = "none";
 }
+  // 💕 Animación suave de fondo
+setInterval(() => {
+  const deco = document.createElement("div");
+  const icons = ["💖", "💗", "✨", "🥰", "💫"];
+  deco.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+  deco.style.position = "fixed";
+  deco.style.left = Math.random() * 100 + "vw";
+  deco.style.bottom = "-20px";
+  deco.style.fontSize = Math.random() * 18 + 14 + "px";
+  deco.style.opacity = "0.8";
+  deco.style.animation = "floatBg 7s linear forwards";
+  document.body.appendChild(deco);
+
+  setTimeout(() => deco.remove(), 7000);
+}, 800);
+
 </script>
 
 </body>
