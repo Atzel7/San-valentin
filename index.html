@@ -107,12 +107,25 @@ button:hover {
     transform: translateY(0);
   }
 }
-  .buttons {
+.buttons {
   position: relative;
   display: flex;
   justify-content: center;
-  gap: 15px;
+  align-items: center;
+  gap: 25px;
   margin-top: 20px;
+}
+
+/* Ambos botones normales */
+.buttons button {
+  position: relative;
+}
+
+/* El NO se moverá, pero sin romper el layout */
+#noBtn {
+  position: relative;
+}
+
 }
 @keyframes floatBg {
   from {
