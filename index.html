@@ -199,10 +199,10 @@ updateCounter();
 // 😈 Botón NO huye
 function moveNo() {
   const btn = document.getElementById("noBtn");
-  const x = Math.random() * 120 - 60;
-  const y = Math.random() * 60 - 30;
-  btn.style.transform = `translate(${x}px, ${y}px)`;
+  btn.style.left = Math.random() * (window.innerWidth - 100) + "px";
+  btn.style.top = Math.random() * (window.innerHeight - 50) + "px";
 }
+
 
 
 // 💖 MUCHOS CORAZONES al decir SÍ
