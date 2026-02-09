@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>¿Quieres ser mi San Valentín?</title>
+  <title>¿Quieres ser mi San Valentín? 💖</title>
 
-  <!-- FUENTES -->
+  <!-- FUENTES ROMÁNTICAS -->
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <!-- CONFETI -->
+  <!-- CONFETI / CORAZONES -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <style>
@@ -30,14 +30,14 @@
       border-radius: 25px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
       max-width: 90%;
-      animation: fadeIn 2s ease;
+      animation: fadeIn 1.8s ease;
     }
 
     h1 {
       font-family: 'Dancing Script', cursive;
-      font-size: 2.3em;
+      font-size: 2.4em;
       color: #d63384;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
 
     p {
@@ -48,38 +48,33 @@
 
     .counter {
       font-size: 0.95em;
-      margin-bottom: 20px;
       color: #555;
+      margin-bottom: 25px;
     }
 
     button {
-      padding: 12px 25px;
+      padding: 12px 26px;
       font-size: 1em;
       border: none;
       border-radius: 30px;
       cursor: pointer;
-      margin: 10px;
       transition: transform 0.2s;
-    }
-
-    #yesBtn {
-      background: #ff4d6d;
-      color: white;
-    }
-
-    #noBtn {
-      background: #adb5bd;
-      color: white;
-      position: absolute;
     }
 
     button:hover {
       transform: scale(1.05);
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    #yesBtn {
+      background: #ff4d6d;
+      color: white;
+      margin-right: 10px;
+    }
+
+    #noBtn {
+      background: #adb5bd;
+      color: white;
+      position: absolute;
     }
 
     #musicBtn {
@@ -94,6 +89,11 @@
       font-size: 0.9em;
       z-index: 1000;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 
@@ -101,9 +101,10 @@
 
   <div class="card">
     <h1>¿Quieres ser mi San Valentín? 💖</h1>
+
     <p>
-      No prometo flores todos los días,  
-      pero sí amor sincero, risas y un lugar seguro a mi lado.
+      No prometo perfección,  
+      pero sí amor sincero, risas y cuidarte bonito todos los días.
     </p>
 
     <div class="counter" id="counter"></div>
@@ -120,6 +121,7 @@
   <button id="musicBtn" onclick="playMusic()">🎵 Tocar música</button>
 
   <script>
+    // FECHA IMPORTANTE
     const startDate = new Date("2025-06-26T21:00:00");
 
     function updateCounter() {
@@ -140,6 +142,7 @@
     setInterval(updateCounter, 1000);
     updateCounter();
 
+    // BOTÓN NO QUE HUYE
     function moveNo() {
       const btn = document.getElementById("noBtn");
       const x = Math.random() * (window.innerWidth - 100);
@@ -148,43 +151,42 @@
       btn.style.top = y + "px";
     }
 
-  function sayYes() {
-  const duration = 5000;
-  const end = Date.now() + duration;
+    // CORAZONES AL DECIR SÍ
+    function sayYes() {
+      const duration = 3000;
+      const end = Date.now() + duration;
 
-  (function frame() {
-    confetti({
-      particleCount: 8,
-      angle: 60,
-      spread: 55,
-      origin: { x: 0 },
-      shapes: ["heart"],
-      colors: ["#ff4d6d", "#ff758f", "#ffd6e0"]
-    });
-    confetti({
-      particleCount: 8,
-      angle: 120,
-      spread: 55,
-      origin: { x: 1 },
-      shapes: ["heart"],
-      colors: ["#ff4d6d", "#ff758f", "#ffd6e0"]
-    });
+      (function frame() {
+        confetti({
+          particleCount: 10,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0 },
+          shapes: ["heart"],
+          colors: ["#ff4d6d", "#ff758f", "#ffd6e0"]
+        });
+        confetti({
+          particleCount: 10,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1 },
+          shapes: ["heart"],
+          colors: ["#ff4d6d", "#ff758f", "#ffd6e0"]
+        });
 
-    if (Date.now() < end) {
-      requestAnimationFrame(frame);
-    }
-  })();
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      })();
 
-      alert("💖💖💖\n"Me haces tan feliz que no sabes cuánto 🥹💖\n\n" +
-      "Te amo, gracias por existir y por elegirme.\n" +
-      "Prometo cuidarte siempre 💕");
+      alert("💖💖💖\nSabía que dirías que sí.\nTe amo muchísimo.");
 
       document.getElementById("music").play();
     }
 
+    // BOTÓN DE MÚSICA
     function playMusic() {
-      const music = document.getElementById("music");
-      music.play();
+      document.getElementById("music").play();
       document.getElementById("musicBtn").style.display = "none";
     }
   </script>
